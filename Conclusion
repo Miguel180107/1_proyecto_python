@@ -1,0 +1,51 @@
+# Informe final del analisis del Titanic
+
+## Dataset utilizado
+
+Para este trabajo hemos utilizado el dataset del Titanic de Kaggle. En este dataset tenemos informacion de los pasajeros como la edad, el sexo, la clase del billete, el precio del billete y si sobrevivieron o no.
+
+El dataset tiene 891 pasajeros y nos sirve para poder analizar que factores podian tener relacion con la supervivencia.
+
+## Tratamiento de los datos
+
+Primero hemos revisado los datos para ver si habia valores nulos y datos repetidos. Hemos visto que algunas columnas tenian valores que faltaban sobre todo `Age`, `Cabin` y `Embarked`.
+
+En el caso de `Age` hemos rellenado los valores que faltaban usando la mediana. La columna `Cabin` tenia demasiados valores vacios por lo que no la hemos utilizado para el analisis. En `Embarked` habia muy pocos valores vacios y se pueden rellenar usando el valor que mas se repite.
+
+Tambien hemos comprobado si habia filas duplicadas para evitar que los resultados del analisis fueran incorrectos.
+
+## Resultados del analisis
+
+De los 891 pasajeros que hay en el dataset sobrevivieron 342. Esto significa que sobrevivio aproximadamente el **38,4%** de los pasajeros.
+
+Al mirar el sexo de los pasajeros se ve una diferencia bastante grande. Aproximadamente el **74,2% de las mujeres sobrevivieron**, mientras que en los hombres sobrevivio solo el **18,9%**.
+
+Tambien hay diferencias dependiendo de la clase del billete. En primera clase sobrevivio aproximadamente el **63%**, en segunda clase el **47,3%** y en tercera clase el **24,2%**.
+
+Por lo tanto se puede ver que la clase del billete tambien tiene bastante relacion con la supervivencia.
+
+## Edad y supervivencia
+
+Para estudiar la edad hemos creado diferentes grupos de edad para poder compararlos mejor.
+
+Al comparar estos grupos podemos ver que hay diferencias en la supervivencia dependiendo de la edad. Los pasajeros mas jovenes tienen una proporcion de supervivencia diferente a la de los adultos.
+
+Aun asi la edad no se puede analizar por separado ya que tambien influyen otros factores como el sexo o la clase del billete.
+
+## Sexo y clase
+
+Si juntamos el sexo y la clase podemos ver diferencias aun mas grandes. Por ejemplo las mujeres de primera clase tuvieron una proporcion de supervivencia mucho mayor que los hombres de tercera clase.
+
+Esto nos demuestra que analizar varias variables a la vez puede darnos informacion mas completa que analizar cada una por separado.
+
+## Conclusiones
+
+1. En total sobrevivio aproximadamente el **38,4% de los pasajeros**, por lo que fueron mas los pasajeros que no sobrevivieron.
+
+2. El sexo es una de las variables donde se ve una diferencia mas grande. Sobrevivieron muchas mas mujeres que hombres, un 74,2% frente a un 18,9%.
+
+3. La clase del billete tambien tiene bastante importancia. Los pasajeros de primera clase tuvieron una supervivencia del 63%, mientras que en tercera clase fue del 24,2%.
+
+4. La edad tambien muestra diferencias entre los pasajeros aunque no es suficiente para explicar por si sola si una persona sobrevivio o no.
+
+5. Al juntar el sexo y la clase se pueden ver diferencias todavia mas claras. Por eso es util comparar varias variables juntas y no solo una.
