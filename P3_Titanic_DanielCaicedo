@@ -1,0 +1,78 @@
+T3. Creación de nuevas columnas y transformación de datos
+Introducción
+
+En esta tarea se crean nuevas variables a partir de los datos originales utilizando operaciones vectorizadas de NumPy y Pandas. Estas transformaciones permiten enriquecer el análisis posterior sin utilizar bucles sobre las filas del dataset.
+
+Importación de librerías
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+
+Carga del dataset
+
+df = sns.load_dataset("titanic")
+ 
+print("Dataset cargado correctamente")
+df.head()
+
+Creación de una nueva columna: Franja de edad
+
+Se agrupan los pasajeros en diferentes categorías según su edad.
+
+# Definir condiciones
+ 
+condiciones = [
+df["age"] < 18,
+(df["age"] >= 18) & (df["age"] < 35),
+(df["age"] >= 35) & (df["age"] < 60),
+df["age"] >= 60
+]
+ 
+# Categorías asociadas
+ 
+categorias = ["Menor", "Joven", "Adulto", "Mayor"]
+ 
+# Crear nueva columna
+ 
+df["franja_edad"] = np.select(condiciones, categorias)
+ 
+# Comprobar resultado
+ 
+df[["age", "franja_edad"]].head(10)
+
+Explicación
+
+La función np.select() permite asignar etiquetas según varias condiciones de forma vectorizada. Gracias a esta nueva variable será posible analizar posteriormente la supervivencia por grupos de edad.
+
+Normalización de la variable Fare
+
+La tarifa del billete (fare) presenta valores muy dispersos. Para facilitar comparaciones se normaliza mediante el método Min-Max.
+
+# Normalización Min-Max
+ 
+df["fare_normalizada"] = (
+(df["fare"] - df["fare"].min()) /
+(df["fare"].max() - df["fare"].min())
+)
+ 
+# Comprobar resultado
+ 
+df[["fare", "fare_normalizada"]].head(10)
+
+Explicación
+
+La normalización Min-Max transforma los valores a una escala comprendida entre 0 y 1:
+
+0 representa el valor mínimo.
+1 representa el valor máximo.
+El resto de valores quedan proporcionalmente distribuidos entre ambos extremos.
+
+Comprobación de las nuevas columnas
+df[["age", "franja_edad", "fare", "fare_normalizada"]].head(15)
+
+Se ha creado la nueva variable franja_edad, que clasifica a los pasajeros en distintos grupos de edad.
+La creación de esta variable se ha realizado mediante NumPy, cumpliendo uno de los requisitos del proyecto.
+Se ha generado una segunda variable llamada fare_normalizada, obtenida mediante una transformación Min-Max.
+Ambas operaciones se han realizado de forma vectorizada utilizando NumPy y Pandas, sin necesidad de emplear bucles for.
+Estas nuevas variables facilitarán el análisis posterior de la supervivencia por edad y la comparación de precios de los billetes.
