@@ -1,0 +1,27 @@
+import seaborn as sns
+
+df = sns.load_dataset("titanic")
+
+print("===== 1. DATOS GENERALES =====")
+print("Total de pasajeros:", len(df))
+print("Filas repetidas:", df.duplicated().sum())
+
+print("\n===== 2. CIFRAS DEL INFORME =====")
+print("Supervivientes:", df["survived"].sum())
+print("Porcentaje que sobrevivió:", round(df["survived"].mean() * 100, 1), "%")
+
+print("\nPorcentaje por sexo:")
+print((df.groupby("sex")["survived"].mean() * 100).round(1))
+
+print("\nPorcentaje por clase:")
+print((df.groupby("pclass")["survived"].mean() * 100).round(1))
+
+print("\n===== 3. MEDIA CONTRA MEDIANA DE LA EDAD =====")
+print("Media de edad:", round(df["age"].mean(), 1))
+print("Mediana de edad:", df["age"].median())
+
+print("\n===== 4. SI SE BORRAN LAS FILAS REPETIDAS =====")
+d = df.drop_duplicates()
+print("Pasajeros que quedan:", len(d))
+print("Supervivientes que quedan:", d["survived"].sum())
+print("Porcentaje que sobrevivió:", round(d["survived"].mean() * 100, 1), "%")
