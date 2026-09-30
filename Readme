@@ -1,0 +1,42 @@
+# Análisis exploratorio de datos del Titanic
+
+## Descripción del proyecto
+
+Este proyecto realiza un análisis exploratorio del dataset del Titanic utilizando Python, NumPy y Pandas. El objetivo es cargar los datos, prepararlos, analizarlos y obtener conclusiones sobre los factores relacionados con la supervivencia de los pasajeros.
+
+El dataset utilizado es el de pasajeros del Titanic, cargado directamente mediante Seaborn. Contiene información como la edad, el sexo, la clase del billete, la tarifa y si el pasajero sobrevivió.
+
+## Cómo se une todo en la aplicación
+
+La aplicación se organiza en diferentes partes que trabajan de forma consecutiva.
+
+Primero, se cargan las librerías necesarias, principalmente Pandas, NumPy y Seaborn. Después se carga el dataset del Titanic y se almacena en un DataFrame de Pandas.
+
+A continuación, se realiza una primera inspección de los datos utilizando funciones como `head()`, `info()`, `describe()` y `shape`. Esto permite conocer la estructura del dataset, el número de filas y columnas y los tipos de datos.
+
+Después se realiza la limpieza de los datos. Se comprueban los valores nulos y los registros duplicados. Los valores de `age` se rellenan utilizando la media, `embarked` se completa utilizando la moda y la columna `deck` se elimina debido a que contiene una gran cantidad de valores faltantes. También se comprueban y eliminan las filas duplicadas cuando corresponde.
+
+Una vez preparados los datos, se crean nuevas columnas utilizando NumPy y Pandas. Por ejemplo, se crea `franja_edad`, que clasifica a los pasajeros como Menor, Joven, Adulto o Mayor. También se crea `fare_normalizada`, que transforma el precio del billete a una escala entre 0 y 1. Estas operaciones se realizan de forma vectorizada, sin utilizar bucles `for` sobre las filas.
+Finalmente, se analizan los datos mediante filtros y agrupaciones con `groupby()`. De esta forma se pueden calcular diferentes estadísticas, como el porcentaje total de supervivientes, la supervivencia según el sexo, la supervivencia según la clase y la supervivencia según diferentes franjas de edad.
+
+Por tanto, el funcionamiento completo sigue este proceso:
+
+**Carga de datos → Inspección → Limpieza → Transformación → Análisis → Estadísticas → Conclusiones**
+
+## Resultados principales
+
+Los resultados obtenidos muestran que aproximadamente el 38 % de los pasajeros sobrevivieron.
+
+La tasa de supervivencia fue diferente según el sexo: aproximadamente el 74 % de las mujeres sobrevivieron frente al 19 % de los hombres.
+
+También se observaron diferencias según la clase del billete: la supervivencia fue aproximadamente del 63 % en primera clase, del 47 % en segunda clase y del 24 % en tercera clase.
+
+La relación directa entre edad y supervivencia fue débil, aunque los menores de 18 años presentaron la mayor proporción de supervivientes, con aproximadamente un 54 %.
+
+Al combinar sexo y clase se observan diferencias todavía mayores. Por ejemplo, las mujeres de primera y segunda clase tuvieron tasas de supervivencia muy altas, mientras que los hombres de segunda y tercera clase tuvieron tasas mucho menores.
+
+## Conclusiones
+
+El análisis muestra que la supervivencia de los pasajeros no fue igual para todos. El sexo y la clase del billete presentan diferencias importantes en las tasas de supervivencia, mientras que la edad muestra una relación más limitada.
+
+El proyecto permite comprobar cómo NumPy y Pandas pueden utilizarse conjuntamente para cargar, limpiar, transformar y analizar un conjunto de datos real, obteniendo información a partir de estadísticas y agrupaciones.
