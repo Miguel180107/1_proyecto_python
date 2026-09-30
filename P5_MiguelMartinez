@@ -1,0 +1,36 @@
+# Informe final: análisis exploratorio del Titanic
+
+## 1. Introducción
+Este informe resume el análisis exploratorio del dataset del Titanic (891 pasajeros, 15 variables), cargado con seaborn. El objetivo es entender qué factores se relacionan con la supervivencia usando estadística descriptiva con pandas y numpy.
+
+## 2. Preparación de los datos
+- **Inspección inicial:** el dataset mezcla variables numéricas (edad, tarifa) y categóricas (sexo, clase, puerto de embarque).
+- **Valores nulos:** `age` tenía 177 nulos, `embarked` 2 y `deck` 688. Se imputó `age` con la media y `embarked` con la moda (variable categórica). `deck` se eliminó por tener más del 75 % de valores faltantes.
+- **Duplicados:** se comprobaron y se eliminaron las filas duplicadas.
+- **Variables nuevas (vectorizadas, sin bucles):** `franja_edad` (Menor, Joven, Adulto, Mayor) con `np.select`, y `fare_normalizada` con normalización Min-Max.
+
+## 3. Resultados
+
+| Pregunta | Resultado |
+|---|---|
+| Supervivencia global | ≈ 38 % |
+| Por sexo | Mujeres ≈ 74 %, hombres ≈ 19 % |
+| Por clase | 1ª ≈ 63 %, 2ª ≈ 47 %, 3ª ≈ 24 % |
+| Relación con la edad | Correlación lineal débil (≈ -0,08) |
+| Franja con más supervivientes | Menores de 18 años (≈ 54 %) |
+| Sexo + clase | Mujeres 1ª ≈ 97 %, 2ª ≈ 92 %, 3ª ≈ 50 %; hombres 1ª ≈ 37 %, 2ª ≈ 16 %, 3ª ≈ 14 % |
+
+## 4. Conclusiones
+1. **La supervivencia global fue baja:** solo sobrevivió alrededor del 38 % de los pasajeros.
+2. **El sexo fue el factor más determinante:** las mujeres tuvieron una tasa de supervivencia unas cuatro veces mayor que los hombres, coherente con la norma "mujeres y niños primero".
+3. **La clase del billete marcó grandes diferencias:** viajar en 1ª clase multiplicó por más de 2,5 la probabilidad de sobrevivir respecto a la 3ª.
+4. **La edad influyó de forma limitada:** la correlación lineal es débil, pero los menores de 18 años fueron el grupo con mayor proporción de supervivientes.
+5. **Sexo y clase se refuerzan entre sí:** las mujeres de 1ª y 2ª clase casi siempre sobrevivieron, mientras que los hombres de 2ª y 3ª clase rara vez lo hicieron. Analizar cada variable por separado oculta este efecto.
+
+## 5. Limitaciones
+- La imputación de `age` con la media puede sesgar los resultados por franja de edad.
+- Las diferencias observadas son asociaciones, no prueban causalidad.
+- Puede haber otros factores no recogidos en el dataset (ubicación del camarote, proximidad a los botes salvavidas).
+
+## 6. Conclusión general
+Las probabilidades de sobrevivir al hundimiento dependieron sobre todo del sexo y de la clase social, y en menor medida de la edad. El análisis muestra que la supervivencia no fue aleatoria: estuvo muy condicionada por quién era el pasajero y dónde viajaba.
